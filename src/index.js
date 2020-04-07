@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 // eslint-disable-next-line import/no-named-as-default,import/no-named-as-default-member
 import App from './App';
@@ -7,9 +8,9 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   // eslint-disable-next-line react/jsx-filename-extension
-  <React.StrictMode>
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
+  </BrowserRouter>,
   document.getElementById('root'),
 );
 
