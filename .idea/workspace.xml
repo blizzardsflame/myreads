@@ -4,7 +4,6 @@
     <list default="true" id="b861f7e3-16cc-4a40-b5c7-58b6e54e44f7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/getAllBooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,28 +21,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+            <state relative-caret-position="267">
+              <caret line="172" column="26" lean-forward="true" selection-start-line="172" selection-start-column="26" selection-end-line="172" selection-end-column="26" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="n#ListBooks#0" />
                 <element signature="e#777#1059#0" />
+                <element signature="e#1552#2093#0" />
+                <element signature="e#2118#2788#0" />
                 <element signature="e#2358#2552#0" />
-                <element signature="n#BookSearch#0" />
+                <element signature="n#BookshelfChanger#0" />
                 <element signature="e#3427#3563#0" />
                 <element signature="e#3592#3708#0" />
                 <element signature="n#SearchInput#0" />
-                <element signature="e#3978#4145#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Data.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -71,6 +62,7 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/getAllBooks.js" />
         <option value="$PROJECT_DIR$/src/Data.js" />
+        <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/App.js" />
       </list>
     </option>
@@ -145,7 +137,7 @@
       <workItem from="1586133455789" duration="854000" />
       <workItem from="1586300186149" duration="916000" />
       <workItem from="1586315975892" duration="1082000" />
-      <workItem from="1586362837988" duration="5072000" />
+      <workItem from="1586362837988" duration="7164000" />
     </task>
     <task id="LOCAL-00001" summary="Project init starter files">
       <created>1586229231147</created>
@@ -175,11 +167,25 @@
       <option name="project" value="LOCAL" />
       <updated>1586396610641</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: Main Page prop&#10;&#10;Adding the props to the main page to display the books">
+      <created>1586400380709</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1586400380709</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fix: Url syntax error&#10;&#10;using `` characters in url image of the books&#10;also adding the starter css file of myreads project">
+      <created>1586401512170</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1586401512170</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12040000" />
+    <option name="totallyTimeSpent" value="14132000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
@@ -200,7 +206,7 @@
       <window_info anchor="bottom" id="SonarLint" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Migrations" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49924356" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49924356" visible="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50075644" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -259,7 +265,9 @@
     <MESSAGE value="feat: Ui Splitting and routing&#10;&#10;Splitting the Ui into 2 components, Book list and search component with routing." />
     <MESSAGE value="feat: Splitting search component&#10;&#10;Splitting the search component into search bar and results.&#10;The Ui is completely split at this point." />
     <MESSAGE value="feat: Init Data&#10;&#10;creating a data file that contains all the books, by important the book list from https://reactnd-books-api.udacity.com/books" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Init Data&#10;&#10;creating a data file that contains all the books, by important the book list from https://reactnd-books-api.udacity.com/books" />
+    <MESSAGE value="feat: Main Page prop&#10;&#10;Adding the props to the main page to display the books" />
+    <MESSAGE value="fix: Url syntax error&#10;&#10;using `` characters in url image of the books&#10;also adding the starter css file of myreads project" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Url syntax error&#10;&#10;using `` characters in url image of the books&#10;also adding the starter css file of myreads project" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/package.json">
@@ -267,13 +275,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.eslintrc.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.test.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -318,24 +319,42 @@
     <entry file="file://$PROJECT_DIR$/src/Data.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="72" column="15" lean-forward="true" selection-start-line="72" selection-start-column="15" selection-end-line="72" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+        <state relative-caret-position="267">
+          <caret line="172" column="26" lean-forward="true" selection-start-line="172" selection-start-column="26" selection-end-line="172" selection-end-column="26" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <element signature="n#ListBooks#0" />
             <element signature="e#777#1059#0" />
+            <element signature="e#1552#2093#0" />
+            <element signature="e#2118#2788#0" />
             <element signature="e#2358#2552#0" />
-            <element signature="n#BookSearch#0" />
+            <element signature="n#BookshelfChanger#0" />
             <element signature="e#3427#3563#0" />
             <element signature="e#3592#3708#0" />
             <element signature="n#SearchInput#0" />
-            <element signature="e#3978#4145#0" />
           </folding>
         </state>
       </provider>

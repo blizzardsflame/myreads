@@ -128,10 +128,11 @@ class BookshelfChanger extends Component{
 
 class BookSearch extends Component{
     render(){
+        const { books } = this.props;
         return(
             <div className="search-books">
                 <SearchBar />
-                <Searchresults />
+                <Searchresults books={books} />
             </div>
         );
     }
@@ -164,10 +165,13 @@ class SearchInput extends Component{
 }}
 
 const Searchresults = props =>{
+    const { books } = props;
     return(
         <div className="search-books-results">
             <ol className="books-grid">
-                <Book />
+                {books.map(book => (
+                    <Book key={book.id} book={book} shelf="none"/>
+                ))}
             </ol>
         </div>
     );
