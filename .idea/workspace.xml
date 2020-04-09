@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b861f7e3-16cc-4a40-b5c7-58b6e54e44f7" name="Default Changelist" comment="feat: Ui Splitting and routing&#10;&#10;Splitting the Ui into 2 components, Book list and search component with routing.">
+    <list default="true" id="b861f7e3-16cc-4a40-b5c7-58b6e54e44f7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/getAllBooks.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="124" column="1" lean-forward="true" selection-start-line="124" selection-start-column="1" selection-end-line="124" selection-end-column="1" />
+            <state relative-caret-position="69">
+              <caret line="122" selection-start-line="122" selection-end-line="122" />
               <folding>
                 <element signature="n#ListBooks#0" />
                 <element signature="e#777#1059#0" />
@@ -30,13 +30,30 @@
                 <element signature="e#1448#2324#0" />
                 <element signature="e#2358#2552#0" />
                 <element signature="n#BookshelfChanger#0" />
-                <element signature="e#4511#4519#0" />
+                <element signature="n#BookSearch#0" />
+                <element signature="n#SearchInput#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/getAllBooks.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3196">
+              <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,6 +63,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/Data.js" />
+        <option value="$PROJECT_DIR$/src/getAllBooks.js" />
       </list>
     </option>
   </component>
@@ -118,7 +137,8 @@
       <updated>1586133451409</updated>
       <workItem from="1586133455789" duration="854000" />
       <workItem from="1586300186149" duration="916000" />
-      <workItem from="1586315975892" duration="703000" />
+      <workItem from="1586315975892" duration="1082000" />
+      <workItem from="1586362837988" duration="3169000" />
     </task>
     <task id="LOCAL-00001" summary="Project init starter files">
       <created>1586229231147</created>
@@ -134,27 +154,34 @@
       <option name="project" value="LOCAL" />
       <updated>1586230206750</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: Splitting search component&#10;&#10;Splitting the search component into search bar and results.&#10;The Ui is completely split at this point.">
+      <created>1586317065174</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1586317065174</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6648000" />
+    <option name="totallyTimeSpent" value="10137000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27609682" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2806354" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.5351882" />
       <window_info anchor="bottom" id="SonarLint" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
@@ -216,7 +243,8 @@
     <MESSAGE value="Project init starter files" />
     <MESSAGE value="Ui Splitting and routing" />
     <MESSAGE value="feat: Ui Splitting and routing&#10;&#10;Splitting the Ui into 2 components, Book list and search component with routing." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Ui Splitting and routing&#10;&#10;Splitting the Ui into 2 components, Book list and search component with routing." />
+    <MESSAGE value="feat: Splitting search component&#10;&#10;Splitting the search component into search bar and results.&#10;The Ui is completely split at this point." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Splitting search component&#10;&#10;Splitting the search component into search bar and results.&#10;The Ui is completely split at this point." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/package.json">
@@ -232,13 +260,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BooksAPI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret column="39" selection-start-column="39" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -250,8 +271,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="124" column="1" lean-forward="true" selection-start-line="124" selection-start-column="1" selection-end-line="124" selection-end-column="1" />
+        <state relative-caret-position="69">
+          <caret line="122" selection-start-line="122" selection-end-line="122" />
           <folding>
             <element signature="n#ListBooks#0" />
             <element signature="e#777#1059#0" />
@@ -259,8 +280,47 @@
             <element signature="e#1448#2324#0" />
             <element signature="e#2358#2552#0" />
             <element signature="n#BookshelfChanger#0" />
-            <element signature="e#4511#4519#0" />
+            <element signature="n#BookSearch#0" />
+            <element signature="n#SearchInput#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEARCH_TERMS.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/INSTRUCTIONS.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-1119" />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BooksAPI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="30" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/getAllBooks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3196">
+          <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
         </state>
       </provider>
     </entry>
