@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import './App.css';
+import data from './Data';
 
 class BooksApp extends Component {
-  state = {};
+    bookshelves = [
+        { key: 'currentlyReading', name: 'Currently Reading' },
+        { key: 'wantToRead', name: 'Want to Read' },
+        { key: 'read', name: 'Have Read' },
+    ];
+  state = {
+      books : data,
+  };
   render() {
+      const { books } = this.state;
     return (
         <div className="app">
-          <Route exact path="/" component={ListBooks}/>
-          <Route path="/search" component={BookSearch}/>
+          <Route exact path="/"
+                 render={() => (
+                     <ListBooks bookshelves={this.bookshelves} books={books} />
+                     )}
+          />
+          <Route path="/search" render={() => <BookSearch books={books} />}/>
         </div>
     );
   }
@@ -16,13 +29,13 @@ class BooksApp extends Component {
 
 class ListBooks extends Component{
     render(){
-        const { bookshelves } = this.props;
+        const { bookshelves, books } = this.props;
         return(
             <div className="list-books">
                 <div className="list-books-title">
                     <h1>MyReads</h1>
                 </div>
-                <Bookfloor bookshelves={bookshelves} />
+                <Bookfloor bookshelves={bookshelves} books={books} />
                 <OpenSearchButton />
             </div>
         )
@@ -30,12 +43,12 @@ class ListBooks extends Component{
 }
 
 const Bookfloor = props => {
-    const { bookshelves } = props;
+    const { bookshelves, books } = props;
     return(
         <div className="list-books-content">
             <div>
                 {bookshelves.map(shelf => (
-                    <Bookshelf key={shelf.key} shelf={shelf} />
+                    <Bookshelf key={shelf.key} shelf={shelf} books={books} />
                 ))}
             </div>
         </div>
@@ -43,13 +56,17 @@ const Bookfloor = props => {
 };
 
 const Bookshelf = props => {
-    const { shelf } = props;
+    const { shelf, books } = props;
+    const shelfsBook = books.filter(book => book.shelf === shelf.key);
     return (
         <div className="bookshelf">
             <h2 className="bookshelf-title">{shelf.name}</h2>
             <div className="bookshelf-books">
                 <ol className="books-grid">
-                    <Book book={{}}/>
+                    {shelfsBook.map(book => (
+                        <Book key={book.id} book={book} shelf={shelf.key}/>
+                    ))
+                    }
                 </ol>
             </div>
         </div>
@@ -57,7 +74,7 @@ const Bookshelf = props => {
 };
 
 const Book = props => {
-    const { book } = props;
+    const { book, shelf } = props;
     return(
         <li>
         <div className="book">
@@ -67,14 +84,13 @@ const Book = props => {
                     style={{
                         width: 128,
                         height: 192,
-                        backgroundImage:
-                            'url("http://books.google.com/books/content?id=32haAAAAMAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72yckZ5f5bDFVIf7BGPbjA0KYYtlQ__nWB-hI_YZmZ-fScYwFy4O_fWOcPwf-pgv3pPQNJP_sT5J_xOUciD8WaKmevh1rUR-1jk7g1aCD_KeJaOpjVu0cm_11BBIUXdxbFkVMdi&source=gbs_api")',
+                        backgroundImage: 'url(${book.imageLinks.thumbnail})',
                     }}
                 />
-                <BookshelfChanger />
+                <BookshelfChanger book={book} shelf={shelf} />
             </div>
             <div className="book-title">{book.title}</div>
-            <div className="book-authors">{book.authors}</div>
+            <div className="book-authors">{book.authors.join(', ')}</div>
         </div>
         </li>
     );

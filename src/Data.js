@@ -1,4 +1,4 @@
-const getAllBooks = [
+const data = [
   {
     title: 'The Linux Command Line',
     subtitle: 'A Complete Introduction',
@@ -320,4 +320,4 @@ const getAllBooks = [
   },
 ];
 
-export default getAllBooks;
+export default data;
