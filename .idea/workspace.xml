@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b861f7e3-16cc-4a40-b5c7-58b6e54e44f7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,12 +23,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1751">
-              <caret line="139" column="16" selection-start-line="139" selection-start-column="16" selection-end-line="139" selection-end-column="16" />
+            <state relative-caret-position="71">
+              <caret line="139" column="20" selection-start-line="139" selection-start-column="20" selection-end-line="139" selection-end-column="20" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#201#363#0" />
+                <element signature="e#459#565#0" />
+                <element signature="e#604#864#0" />
+                <element signature="e#1451#1501#0" />
+                <element signature="n#ListBooks#0" />
+                <element signature="e#2558#2884#0" />
+                <element signature="e#2914#3478#0" />
+                <element signature="e#4289#4460#0" />
+                <element signature="n#BookshelfChanger#0" />
                 <element signature="n#BookSearch#0" />
-                <element signature="n#SearchInput#0" />
+                <element signature="e#5646#5781#0" />
+                <element signature="e#5810#5931#0" />
+                <element signature="e#6208#6502#0" />
               </folding>
             </state>
           </provider>
@@ -46,6 +59,8 @@
       <find>&quot;</find>
       <find>searchbook</find>
       <find>BookSearch</find>
+      <find>searchBooks</find>
+      <find>this.props</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -135,7 +150,7 @@
       <workItem from="1586362837988" duration="8116000" />
       <workItem from="1586451432856" duration="1334000" />
       <workItem from="1586476614587" duration="4695000" />
-      <workItem from="1586552572309" duration="1203000" />
+      <workItem from="1586552572309" duration="6964000" />
     </task>
     <task id="LOCAL-00001" summary="Project init starter files">
       <created>1586229231147</created>
@@ -186,11 +201,18 @@
       <option name="project" value="LOCAL" />
       <updated>1586402828172</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: Changing Book's shelf&#10;&#10;adding props to each component and const, and the change shelf function.&#10;after a few tests the books are changing shelves and the components are being updated.">
+      <created>1586565723517</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1586565723518</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22316000" />
+    <option name="totallyTimeSpent" value="28077000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -272,7 +294,8 @@
     <MESSAGE value="feat: Main Page prop&#10;&#10;Adding the props to the main page to display the books" />
     <MESSAGE value="fix: Url syntax error&#10;&#10;using `` characters in url image of the books&#10;also adding the starter css file of myreads project" />
     <MESSAGE value="feat: Adding search props&#10;&#10;Adding props to search components" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Adding search props&#10;&#10;Adding props to search components" />
+    <MESSAGE value="feat: Changing Book's shelf&#10;&#10;adding props to each component and const, and the change shelf function.&#10;after a few tests the books are changing shelves and the components are being updated." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Changing Book's shelf&#10;&#10;adding props to each component and const, and the change shelf function.&#10;after a few tests the books are changing shelves and the components are being updated." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/package.json">
@@ -347,12 +370,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1751">
-          <caret line="139" column="16" selection-start-line="139" selection-start-column="16" selection-end-line="139" selection-end-column="16" />
+        <state relative-caret-position="71">
+          <caret line="139" column="20" selection-start-line="139" selection-start-column="20" selection-end-line="139" selection-end-column="20" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#201#363#0" />
+            <element signature="e#459#565#0" />
+            <element signature="e#604#864#0" />
+            <element signature="e#1451#1501#0" />
+            <element signature="n#ListBooks#0" />
+            <element signature="e#2558#2884#0" />
+            <element signature="e#2914#3478#0" />
+            <element signature="e#4289#4460#0" />
+            <element signature="n#BookshelfChanger#0" />
             <element signature="n#BookSearch#0" />
-            <element signature="n#SearchInput#0" />
+            <element signature="e#5646#5781#0" />
+            <element signature="e#5810#5931#0" />
+            <element signature="e#6208#6502#0" />
           </folding>
         </state>
       </provider>

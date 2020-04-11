@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Route, Link} from 'react-router-dom';
 import './App.css';
 import * as BooksAPI from './BooksAPI';
+import { debounce } from 'throttle-debounce';
 
 
 class BooksApp extends Component {
@@ -14,11 +15,14 @@ class BooksApp extends Component {
         books: [],
         booksearch: [],
     };
+
     componentDidMount = () => {
         BooksAPI.getAll().then(books => {
             this.setState({ books: books });
         });
     };
+
+    //function to update the book shelf
     moveBookshelf = (book, shelf) => {
         const updateBookshelf = this.state.books.map(bk => {
             if (bk.id === book.id) {
@@ -29,6 +33,25 @@ class BooksApp extends Component {
         this.setState({
             books: updateBookshelf,
         });
+    };
+
+    //function for search
+    searchBook = debounce(300, false,query => {
+        if (query.length > 0) {
+            BooksAPI.search(query).then(books => {
+                if (books.error) {
+                    this.setState({ booksearch: [] });
+                } else {
+                    this.setState({ booksearch: books });
+                }
+            });
+        } else {
+            this.setState({ booksearch: [] });
+        }
+    });
+    //reseting the search
+    searchReset = () => {
+        this.setState({ booksearch: [] });
     };
 
     render() {
@@ -42,6 +65,8 @@ class BooksApp extends Component {
                        )}
                 />
                 <Route path="/search" render={() => <BookSearch books={booksearch}
+                                                                onSearch={this.searchBook}
+                                                                onSearchReset={this.searchReset}
                                                                 onMove={this.moveBookshelf} />}/>
             </div>
         );
@@ -111,7 +136,8 @@ const Book = props => {
                     <BookshelfChanger book={book} shelf={shelf} onMove={onMove}/>
                 </div>
                 <div className="book-title">{book.title}</div>
-                <div className="book-authors">{book.authors.join(', ')}</div>
+                <div className="book-authors">
+                    {book.authors && book.authors.join(', ')}</div>
             </div>
         </li>
     );
@@ -157,10 +183,10 @@ class BookshelfChanger extends Component {
 
 class BookSearch extends Component {
     render() {
-        const {books} = this.props;
+        const { books, onSearch, onSearchReset } = this.props;
         return (
             <div className="search-books">
-                <SearchBar/>
+                <SearchBar onSearch={onSearch} onSearchReset={onSearchReset} />
                 <Searchresults books={books}/>
             </div>
         );
@@ -168,27 +194,41 @@ class BookSearch extends Component {
 }
 
 const SearchBar = props => {
+    const { onSearch, onSearchReset } = props;
     return (
         <div className="search-books-bar">
-            <CloseButton/>
-            <SearchInput/>
+            <CloseButton onSearchReset={onSearchReset} />
+            <SearchInput onSearch={onSearch} />
         </div>
     );
 };
 
-const CloseButton = () => {
+const CloseButton = props => {
+    const { onSearchReset } = props;
     return (
         <Link to="/">
-            <button className="close-search">Close</button>
+            <button className="close-search" onClick={onSearchReset}>
+                Close
+            </button>
         </Link>
     );
 };
 
 class SearchInput extends Component {
+    state = {
+        val : "",
+    };
+    handleChange = event => {
+        const value = event.target.value ;
+        this.setState({val : value},()=>{
+            this.props.onSearch(value);
+        });
+    };
     render() {
         return (
             <div className="search-books-input-wrapper">
-                <input type="text" placeholder="Search by title or author"/>
+                <input type="text" placeholder="Search by title or author"
+                       value={this.state.val} onChange={this.handleChange} autoFocus/>
             </div>
         );
     }
