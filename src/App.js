@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Route, Link} from 'react-router-dom';
 import './App.css';
 import * as BooksAPI from './BooksAPI';
-import { debounce } from 'throttle-debounce';
+import {debounce} from 'throttle-debounce';
 
 
 class BooksApp extends Component {
@@ -18,40 +18,44 @@ class BooksApp extends Component {
 
     componentDidMount = () => {
         BooksAPI.getAll().then(books => {
-            this.setState({ books: books });
+            this.setState({books: books});
         });
     };
 
     //function to update the book shelf
     moveBookshelf = (book, shelf) => {
-        const updateBookshelf = this.state.books.map(bk => {
-            if (bk.id === book.id) {
-                bk.shelf = shelf;
+        BooksAPI.update(book, shelf);
+
+        let updateBookshelf = [];
+        updateBookshelf = this.state.books.filter(bk => bk.id !== book.id);
+
+            if (shelf !== 'none') {
+                book.shelf = shelf;
+                updateBookshelf = updateBookshelf.concat(book);
             }
-            return bk;
-        });
+
         this.setState({
             books: updateBookshelf,
         });
     };
 
     //function for search
-    searchBook = debounce(300, false,query => {
+    searchBook = debounce(300, false, query => {
         if (query.length > 0) {
             BooksAPI.search(query).then(books => {
                 if (books.error) {
-                    this.setState({ booksearch: [] });
+                    this.setState({booksearch: []});
                 } else {
-                    this.setState({ booksearch: books });
+                    this.setState({booksearch: books});
                 }
             });
         } else {
-            this.setState({ booksearch: [] });
+            this.setState({booksearch: []});
         }
     });
     //reseting the search
     searchReset = () => {
-        this.setState({ booksearch: [] });
+        this.setState({booksearch: []});
     };
 
     render() {
@@ -61,13 +65,14 @@ class BooksApp extends Component {
                 <Route exact path="/"
                        render={() => (
                            <ListBooks bookshelves={this.bookshelves}
-                                      books={books} onMove={this.moveBookshelf} />
+                                      books={books} onMove={this.moveBookshelf}/>
                        )}
                 />
-                <Route path="/search" render={() => <BookSearch books={booksearch}
+                <Route path="/search" render={() => <BookSearch books={books}
+                                                                booksearch={booksearch}
                                                                 onSearch={this.searchBook}
                                                                 onSearchReset={this.searchReset}
-                                                                onMove={this.moveBookshelf} />}/>
+                                                                onMove={this.moveBookshelf}/>}/>
             </div>
         );
     }
@@ -75,13 +80,13 @@ class BooksApp extends Component {
 
 class ListBooks extends Component {
     render() {
-        const { bookshelves, books, onMove } = this.props;
+        const {bookshelves, books, onMove} = this.props;
         return (
             <div className="list-books">
                 <div className="list-books-title">
                     <h1>MyReads</h1>
                 </div>
-                <Bookfloor bookshelves={bookshelves} books={books} onMove={onMove} />
+                <Bookfloor bookshelves={bookshelves} books={books} onMove={onMove}/>
                 <OpenSearchButton/>
             </div>
         )
@@ -94,7 +99,7 @@ const Bookfloor = props => {
         <div className="list-books-content">
             <div>
                 {bookshelves.map(shelf => (
-                    <Bookshelf key={shelf.key} shelf={shelf} books={books} onMove={onMove} />
+                    <Bookshelf key={shelf.key} shelf={shelf} books={books} onMove={onMove}/>
                 ))}
             </div>
         </div>
@@ -110,7 +115,7 @@ const Bookshelf = props => {
             <div className="bookshelf-books">
                 <ol className="books-grid">
                     {shelfsBook.map(book => (
-                        <Book key={book.id} book={book} shelf={shelf.key} onMove={onMove} />
+                        <Book key={book.id} book={book} shelf={shelf.key} onMove={onMove}/>
                     ))
                     }
                 </ol>
@@ -158,7 +163,7 @@ class BookshelfChanger extends Component {
         val: this.props.shelf,
     };
     handleChange = event => {
-        this.setState({ val: event.target.value });
+        this.setState({val: event.target.value});
         this.props.onMove(this.props.book, event.target.value);
     };
 
@@ -183,28 +188,28 @@ class BookshelfChanger extends Component {
 
 class BookSearch extends Component {
     render() {
-        const { books, onSearch, onSearchReset } = this.props;
+        const {books, booksearch, onSearch, onSearchReset, onMove} = this.props;
         return (
             <div className="search-books">
                 <SearchBar onSearch={onSearch} onSearchReset={onSearchReset} />
-                <Searchresults books={books}/>
+                <Searchresults books={books} booksearch={booksearch} onMove={onMove} />
             </div>
         );
     }
 }
 
 const SearchBar = props => {
-    const { onSearch, onSearchReset } = props;
+    const {onSearch, onSearchReset} = props;
     return (
         <div className="search-books-bar">
-            <CloseButton onSearchReset={onSearchReset} />
-            <SearchInput onSearch={onSearch} />
+            <CloseButton onSearchReset={onSearchReset}/>
+            <SearchInput onSearch={onSearch}/>
         </div>
     );
 };
 
 const CloseButton = props => {
-    const { onSearchReset } = props;
+    const {onSearchReset} = props;
     return (
         <Link to="/">
             <button className="close-search" onClick={onSearchReset}>
@@ -216,14 +221,15 @@ const CloseButton = props => {
 
 class SearchInput extends Component {
     state = {
-        val : "",
+        val: "",
     };
     handleChange = event => {
-        const value = event.target.value ;
-        this.setState({val : value},()=>{
+        const value = event.target.value;
+        this.setState({val: value}, () => {
             this.props.onSearch(value);
         });
     };
+
     render() {
         return (
             <div className="search-books-input-wrapper">
@@ -235,12 +241,24 @@ class SearchInput extends Component {
 }
 
 const Searchresults = props => {
-    const {books} = props;
+    const {books, booksearch, onMove} = props;
+    const updateBook = booksearch.map(book => {
+        books.map(bk => {
+            if (bk.id === book.id) {
+                book.shelf = bk.shelf;
+            }
+            return bk;
+        });
+        return book;
+    });
     return (
         <div className="search-books-results">
             <ol className="books-grid">
-                {books.map(book => (
-                    <Book key={book.id} book={book} shelf="none"/>
+                {updateBook.map(book => (
+                    <Book key={book.id}
+                          book={book}
+                          shelf={book.shelf ? book.shelf : 'none'}
+                          onMove={onMove} />
                 ))}
             </ol>
         </div>
