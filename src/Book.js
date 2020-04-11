@@ -12,7 +12,8 @@ const Book = props => {
                         style={{
                             width: 128,
                             height: 192,
-                            backgroundImage: `url(${book.imageLinks.thumbnail})`,
+                            backgroundImage: `url(${book.imageLinks &&
+                            book.imageLinks.thumbnail})`,
                         }}
                     />
                     <BookshelfChanger book={book} shelf={shelf} onMove={onMove}/>
