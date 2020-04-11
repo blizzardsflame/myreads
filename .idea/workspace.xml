@@ -21,18 +21,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="172" column="26" lean-forward="true" selection-start-line="172" selection-start-column="26" selection-end-line="172" selection-end-column="26" />
+            <state relative-caret-position="1751">
+              <caret line="139" column="16" selection-start-line="139" selection-start-column="16" selection-end-line="139" selection-end-column="16" />
               <folding>
-                <element signature="e#0#41#0" expanded="true" />
-                <element signature="n#ListBooks#0" />
-                <element signature="e#777#1059#0" />
-                <element signature="e#1552#2093#0" />
-                <element signature="e#2118#2788#0" />
-                <element signature="e#2358#2552#0" />
-                <element signature="n#BookshelfChanger#0" />
-                <element signature="e#3427#3563#0" />
-                <element signature="e#3592#3708#0" />
+                <element signature="e#0#39#0" expanded="true" />
+                <element signature="n#BookSearch#0" />
                 <element signature="n#SearchInput#0" />
               </folding>
             </state>
@@ -51,6 +44,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>&quot;</find>
+      <find>searchbook</find>
+      <find>BookSearch</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -79,7 +74,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -96,6 +90,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -137,7 +132,10 @@
       <workItem from="1586133455789" duration="854000" />
       <workItem from="1586300186149" duration="916000" />
       <workItem from="1586315975892" duration="1082000" />
-      <workItem from="1586362837988" duration="7164000" />
+      <workItem from="1586362837988" duration="8116000" />
+      <workItem from="1586451432856" duration="1334000" />
+      <workItem from="1586476614587" duration="4695000" />
+      <workItem from="1586552572309" duration="1203000" />
     </task>
     <task id="LOCAL-00001" summary="Project init starter files">
       <created>1586229231147</created>
@@ -181,17 +179,23 @@
       <option name="project" value="LOCAL" />
       <updated>1586401512170</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: Adding search props&#10;&#10;Adding props to search components">
+      <created>1586402828172</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1586402828172</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14132000" />
+    <option name="totallyTimeSpent" value="22316000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2806354" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29425114" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -206,7 +210,7 @@
       <window_info anchor="bottom" id="SonarLint" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Migrations" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49924356" visible="true" weight="0.3289689" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49924356" visible="true" weight="0.22749591" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50075644" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -267,7 +271,8 @@
     <MESSAGE value="feat: Init Data&#10;&#10;creating a data file that contains all the books, by important the book list from https://reactnd-books-api.udacity.com/books" />
     <MESSAGE value="feat: Main Page prop&#10;&#10;Adding the props to the main page to display the books" />
     <MESSAGE value="fix: Url syntax error&#10;&#10;using `` characters in url image of the books&#10;also adding the starter css file of myreads project" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Url syntax error&#10;&#10;using `` characters in url image of the books&#10;also adding the starter css file of myreads project" />
+    <MESSAGE value="feat: Adding search props&#10;&#10;Adding props to search components" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Adding search props&#10;&#10;Adding props to search components" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/package.json">
@@ -342,18 +347,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="172" column="26" lean-forward="true" selection-start-line="172" selection-start-column="26" selection-end-line="172" selection-end-column="26" />
+        <state relative-caret-position="1751">
+          <caret line="139" column="16" selection-start-line="139" selection-start-column="16" selection-end-line="139" selection-end-column="16" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="n#ListBooks#0" />
-            <element signature="e#777#1059#0" />
-            <element signature="e#1552#2093#0" />
-            <element signature="e#2118#2788#0" />
-            <element signature="e#2358#2552#0" />
-            <element signature="n#BookshelfChanger#0" />
-            <element signature="e#3427#3563#0" />
-            <element signature="e#3592#3708#0" />
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#BookSearch#0" />
             <element signature="n#SearchInput#0" />
           </folding>
         </state>

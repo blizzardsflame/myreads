@@ -1,54 +1,75 @@
-import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Route, Link} from 'react-router-dom';
 import './App.css';
-import data from './Data';
+import * as BooksAPI from './BooksAPI';
+
 
 class BooksApp extends Component {
     bookshelves = [
-        { key: 'currentlyReading', name: 'Currently Reading' },
-        { key: 'wantToRead', name: 'Want to Read' },
-        { key: 'read', name: 'Have Read' },
+        {key: 'currentlyReading', name: 'Currently Reading'},
+        {key: 'wantToRead', name: 'Want to Read'},
+        {key: 'read', name: 'Have Read'},
     ];
-  state = {
-      books : data,
-  };
-  render() {
-      const { books } = this.state;
-    return (
-        <div className="app">
-          <Route exact path="/"
-                 render={() => (
-                     <ListBooks bookshelves={this.bookshelves} books={books} />
-                     )}
-          />
-          <Route path="/search" render={() => <BookSearch books={books} />}/>
-        </div>
-    );
-  }
+    state = {
+        books: [],
+        booksearch: [],
+    };
+    componentDidMount = () => {
+        BooksAPI.getAll().then(books => {
+            this.setState({ books: books });
+        });
+    };
+    moveBookshelf = (book, shelf) => {
+        const updateBookshelf = this.state.books.map(bk => {
+            if (bk.id === book.id) {
+                bk.shelf = shelf;
+            }
+            return bk;
+        });
+        this.setState({
+            books: updateBookshelf,
+        });
+    };
+
+    render() {
+        const {books, booksearch} = this.state;
+        return (
+            <div className="app">
+                <Route exact path="/"
+                       render={() => (
+                           <ListBooks bookshelves={this.bookshelves}
+                                      books={books} onMove={this.moveBookshelf} />
+                       )}
+                />
+                <Route path="/search" render={() => <BookSearch books={booksearch}
+                                                                onMove={this.moveBookshelf} />}/>
+            </div>
+        );
+    }
 }
 
-class ListBooks extends Component{
-    render(){
-        const { bookshelves, books } = this.props;
-        return(
+class ListBooks extends Component {
+    render() {
+        const { bookshelves, books, onMove } = this.props;
+        return (
             <div className="list-books">
                 <div className="list-books-title">
                     <h1>MyReads</h1>
                 </div>
-                <Bookfloor bookshelves={bookshelves} books={books} />
-                <OpenSearchButton />
+                <Bookfloor bookshelves={bookshelves} books={books} onMove={onMove} />
+                <OpenSearchButton/>
             </div>
         )
     }
 }
 
 const Bookfloor = props => {
-    const { bookshelves, books } = props;
-    return(
+    const {bookshelves, books, onMove} = props;
+    return (
         <div className="list-books-content">
             <div>
                 {bookshelves.map(shelf => (
-                    <Bookshelf key={shelf.key} shelf={shelf} books={books} />
+                    <Bookshelf key={shelf.key} shelf={shelf} books={books} onMove={onMove} />
                 ))}
             </div>
         </div>
@@ -56,7 +77,7 @@ const Bookfloor = props => {
 };
 
 const Bookshelf = props => {
-    const { shelf, books } = props;
+    const {shelf, books, onMove} = props;
     const shelfsBook = books.filter(book => book.shelf === shelf.key);
     return (
         <div className="bookshelf">
@@ -64,7 +85,7 @@ const Bookshelf = props => {
             <div className="bookshelf-books">
                 <ol className="books-grid">
                     {shelfsBook.map(book => (
-                        <Book key={book.id} book={book} shelf={shelf.key}/>
+                        <Book key={book.id} book={book} shelf={shelf.key} onMove={onMove} />
                     ))
                     }
                 </ol>
@@ -74,43 +95,51 @@ const Bookshelf = props => {
 };
 
 const Book = props => {
-    const { book, shelf } = props;
-    return(
+    const {book, shelf, onMove} = props;
+    return (
         <li>
-        <div className="book">
-            <div className="book-top">
-                <div
-                    className="book-cover"
-                    style={{
-                        width: 128,
-                        height: 192,
-                        backgroundImage: `url(${book.imageLinks.thumbnail})`,
-                    }}
-                />
-                <BookshelfChanger book={book} shelf={shelf} />
+            <div className="book">
+                <div className="book-top">
+                    <div
+                        className="book-cover"
+                        style={{
+                            width: 128,
+                            height: 192,
+                            backgroundImage: `url(${book.imageLinks.thumbnail})`,
+                        }}
+                    />
+                    <BookshelfChanger book={book} shelf={shelf} onMove={onMove}/>
+                </div>
+                <div className="book-title">{book.title}</div>
+                <div className="book-authors">{book.authors.join(', ')}</div>
             </div>
-            <div className="book-title">{book.title}</div>
-            <div className="book-authors">{book.authors.join(', ')}</div>
-        </div>
         </li>
     );
 };
 
 const OpenSearchButton = () => {
-        return(
-            <div className="open-search">
-                <Link to="search">
+    return (
+        <div className="open-search">
+            <Link to="search">
                 <button>Add a book</button>
-                </Link>
-            </div>
-        );
+            </Link>
+        </div>
+    );
 };
 
-class BookshelfChanger extends Component{
+class BookshelfChanger extends Component {
+    state = {
+        val: this.props.shelf,
+    };
+    handleChange = event => {
+        this.setState({ val: event.target.value });
+        this.props.onMove(this.props.book, event.target.value);
+    };
+
     render() {
-        return(
+        return (
             <div className="book-shelf-changer">
-                <select>
+                <select value={this.state.val} onChange={this.handleChange}>
                     <option value="move" disabled>
                         Move to...
                     </option>
@@ -126,47 +155,48 @@ class BookshelfChanger extends Component{
     }
 }
 
-class BookSearch extends Component{
-    render(){
-        const { books } = this.props;
-        return(
+class BookSearch extends Component {
+    render() {
+        const {books} = this.props;
+        return (
             <div className="search-books">
-                <SearchBar />
-                <Searchresults books={books} />
+                <SearchBar/>
+                <Searchresults books={books}/>
             </div>
         );
     }
 }
 
 const SearchBar = props => {
-    return(
+    return (
         <div className="search-books-bar">
-            <CloseButton />
-            <SearchInput />
+            <CloseButton/>
+            <SearchInput/>
         </div>
     );
 };
 
 const CloseButton = () => {
-    return(
+    return (
         <Link to="/">
-        <button className="close-search">Close</button>
+            <button className="close-search">Close</button>
         </Link>
     );
 };
 
-class SearchInput extends Component{
+class SearchInput extends Component {
     render() {
-        return(
+        return (
             <div className="search-books-input-wrapper">
-                <input type="text" placeholder="Search by title or author" />
+                <input type="text" placeholder="Search by title or author"/>
             </div>
         );
-}}
+    }
+}
 
-const Searchresults = props =>{
-    const { books } = props;
-    return(
+const Searchresults = props => {
+    const {books} = props;
+    return (
         <div className="search-books-results">
             <ol className="books-grid">
                 {books.map(book => (
