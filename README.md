@@ -47,7 +47,7 @@ The project can be viewed in the browser at
 ## Screenshots
 
 ![Image of Main Page]
-(https://github.com/blizzardsflame/myreads/screenshot/mainpage.jpg)
+(https://github.com/blizzardsflame/myreads/blob/master/screenshot/mainpage.JPG)
 
 ![Image of Search Page]
-(https://github.com/blizzardsflame/myreads/screenshot/searchpage.jpg)
+(https://github.com/blizzardsflame/myreads/blob/master/screenshot/searchpage.JPG)
